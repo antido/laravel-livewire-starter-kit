@@ -1,0 +1,53 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+/* Dark mode follows the .dark class on <html>, set before the first paint by the theme script in the layouts. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
+
+    /*
+     * The accent colour, defined once. Use accent-* utilities (bg-accent-600, text-accent-700, ...)
+     * for primary actions, active navigation and focus rings. To rebrand, point these at another scale.
+     */
+    --color-accent-50: var(--color-emerald-50);
+    --color-accent-100: var(--color-emerald-100);
+    --color-accent-200: var(--color-emerald-200);
+    --color-accent-300: var(--color-emerald-300);
+    --color-accent-400: var(--color-emerald-400);
+    --color-accent-500: var(--color-emerald-500);
+    --color-accent-600: var(--color-emerald-600);
+    --color-accent-700: var(--color-emerald-700);
+    --color-accent-800: var(--color-emerald-800);
+    --color-accent-900: var(--color-emerald-900);
+    --color-accent-950: var(--color-emerald-950);
+}
+
+@layer base {
+    [x-cloak] {
+        display: none !important;
+    }
+
+    html {
+        color-scheme: light;
+    }
+
+    /* Native controls (date pickers, selects, scrollbars) follow the theme too. */
+    html.dark {
+        color-scheme: dark;
+    }
+
+    /* Set for one frame while the theme changes (see the theme store), so colours switch without fading. */
+    .theme-switching,
+    .theme-switching * {
+        transition: none !important;
+    }
+
+    body {
+        @apply bg-zinc-50 text-zinc-800 antialiased dark:bg-zinc-950 dark:text-zinc-200;
+    }
+}
